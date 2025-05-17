@@ -1,4 +1,4 @@
-package main // Esta deve ser a primeira linha!
+package main
 
 import (
 	"bytes"
@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"regexp"
 	"strconv"
+	"time"
 )
 
 // Códigos ANSI para cores
@@ -73,8 +74,21 @@ func getGPUTemp() string {
 	return Yellow + "Temperatura da GPU não encontrada" + Reset
 }
 
+func clearScreen() {
+	// Limpar a tela e mover o cursor para o topo
+	fmt.Print("\033[H\033[2J")
+}
+
 func main() {
-	// Exibir as temperaturas da CPU e GPU com cores
-	fmt.Println("Temperatura da CPU:", getCPUTemp())
-	fmt.Println("Temperatura da GPU:", getGPUTemp())
+	// Loop infinito para atualizar a cada 2 segundos
+	for {
+		clearScreen()
+		fmt.Println("Monitor de Temperaturas (Atualizando a cada 2 segundos)")
+		fmt.Println("==============================================")
+		fmt.Println("Temperatura da CPU:", getCPUTemp())
+		fmt.Println("Temperatura da GPU:", getGPUTemp())
+
+		// Aguardar 2 segundos antes da próxima atualização
+		time.Sleep(2 * time.Second)
+	}
 }
