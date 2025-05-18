@@ -1,0 +1,89 @@
+📌 Verificando nós do cluster...
+NAME   STATUS   ROLES           AGE   VERSION    INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
+k1     Ready    control-plane   93d   v1.30.13   10.116.39.80   <none>        Ubuntu 24.04.2 LTS   6.8.0-60-generic   containerd://1.7.27
+k2     Ready    <none>          93d   v1.30.13   10.116.39.55   <none>        Ubuntu 24.04.2 LTS   6.8.0-60-generic   containerd://1.7.27
+
+📌 Verificando estado dos componentes principais...
+NAME                 STATUS    MESSAGE   ERROR
+controller-manager   Healthy   ok        
+etcd-0               Healthy   ok        
+scheduler            Healthy   ok        
+
+📌 Verificando pods em todos os namespaces...
+NAMESPACE               NAME                                                     READY   STATUS    RESTARTS        AGE   IP             NODE   NOMINATED NODE   READINESS GATES
+cert-manager            cert-manager-cainjector-f8c54c878-7b4h4                  1/1     Running   50 (32m ago)    50d   10.44.0.9      k2     <none>           <none>
+cert-manager            cert-manager-df44f46c7-6kjcw                             1/1     Running   46 (32m ago)    50d   10.44.0.3      k2     <none>           <none>
+cert-manager            cert-manager-webhook-6445774848-xbk69                    1/1     Running   25 (20h ago)    50d   10.44.0.8      k2     <none>           <none>
+conversao-temperatura   conversao-temperatura-deployment-7674c7fdb6-c9ctt        1/1     Running   32 (20h ago)    64d   10.44.0.2      k2     <none>           <none>
+giropops-senhas         giropops-deployment-fd96d86d4-bxwt2                      1/1     Running   23 (43m ago)    48d   10.44.0.7      k2     <none>           <none>
+giropops-senhas         redis-deployment-7dcbbfbd4f-t455v                        1/1     Running   21 (20h ago)    48d   10.44.0.13     k2     <none>           <none>
+kube-system             coredns-55cb58b774-9kntd                                 1/1     Running   59 (32m ago)    93d   10.32.0.1      k1     <none>           <none>
+kube-system             coredns-55cb58b774-nfdxx                                 1/1     Running   59 (32m ago)    93d   10.32.0.3      k1     <none>           <none>
+kube-system             etcd-k1                                                  1/1     Running   59 (32m ago)    93d   10.116.39.80   k1     <none>           <none>
+kube-system             kube-apiserver-k1                                        1/1     Running   12 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-system             kube-controller-manager-k1                               1/1     Running   22 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-system             kube-proxy-27b8c                                         1/1     Running   12 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-system             kube-proxy-7gtgl                                         1/1     Running   11 (20h ago)    12d   10.116.39.55   k2     <none>           <none>
+kube-system             kube-scheduler-k1                                        1/1     Running   19 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-system             metrics-server-56f48fdb65-9n4pl                          1/1     Running   26 (20h ago)    52d   10.44.0.12     k2     <none>           <none>
+kube-system             weave-net-ns5wq                                          2/2     Running   119 (32m ago)   93d   10.116.39.80   k1     <none>           <none>
+kube-system             weave-net-vvfrr                                          2/2     Running   117 (20h ago)   93d   10.116.39.55   k2     <none>           <none>
+metallb-system          metallb-controller-6d68867687-n55m6                      1/1     Running   47 (20h ago)    79d   10.44.0.11     k2     <none>           <none>
+metallb-system          metallb-speaker-d88nd                                    4/4     Running   239 (20h ago)   93d   10.116.39.55   k2     <none>           <none>
+metallb-system          metallb-speaker-nl22p                                    4/4     Running   236 (32m ago)   93d   10.116.39.80   k1     <none>           <none>
+monitoring              alertmanager-kube-prometheus-kube-prome-alertmanager-0   2/2     Running   94 (20h ago)    79d   10.44.0.5      k2     <none>           <none>
+monitoring              kube-prometheus-grafana-5c57dc75c7-hrmlh                 3/3     Running   141 (20h ago)   79d   10.44.0.10     k2     <none>           <none>
+monitoring              kube-prometheus-kube-prome-operator-6945d7699d-kdhfq     1/1     Running   47 (20h ago)    79d   10.44.0.6      k2     <none>           <none>
+monitoring              kube-prometheus-kube-state-metrics-7cfb7b6594-4rvr2      1/1     Running   118 (32m ago)   79d   10.44.0.1      k2     <none>           <none>
+monitoring              kube-prometheus-prometheus-node-exporter-ssmwv           1/1     Running   60 (20h ago)    93d   10.116.39.55   k2     <none>           <none>
+monitoring              kube-prometheus-prometheus-node-exporter-x4l2n           1/1     Running   59 (32m ago)    93d   10.116.39.80   k1     <none>           <none>
+monitoring              prometheus-kube-prometheus-kube-prome-prometheus-0       2/2     Running   96 (20h ago)    79d   10.44.0.14     k2     <none>           <none>
+nginx-gateway           nginx-gateway-7bd65bb7ff-l5d98                           2/2     Running   61 (32m ago)    12d   10.44.0.4      k2     <none>           <none>
+
+📌 Verificando eventos recentes no cluster...
+metallb-system          32m         Normal    Started                   pod/metallb-speaker-nl22p                                    Started container speaker
+kube-system             32m         Normal    LeaderElection            lease/cert-manager-controller                                cert-manager-df44f46c7-6kjcw-external-cert-manager-controller became leader
+kube-system             32m         Normal    Pulling                   pod/weave-net-ns5wq                                          Pulling image "weaveworks/weave-npc:latest"
+kube-system             32m         Normal    Started                   pod/weave-net-ns5wq                                          Started container weave
+kube-system             32m         Normal    Created                   pod/weave-net-ns5wq                                          Created container: weave
+kube-system             32m         Normal    Pulled                    pod/weave-net-ns5wq                                          Successfully pulled image "weaveworks/weave-kube:latest" in 1.089s (1.089s including waiting). Image size: 30922913 bytes.
+kube-system             32m         Normal    Created                   pod/weave-net-ns5wq                                          Created container: weave-npc
+kube-system             32m         Normal    Pulled                    pod/weave-net-ns5wq                                          Successfully pulled image "weaveworks/weave-npc:latest" in 1.071s (1.071s including waiting). Image size: 12814011 bytes.
+kube-system             32m         Normal    Started                   pod/weave-net-ns5wq                                          Started container weave-npc
+kube-system             31m         Normal    Pulled                    pod/coredns-55cb58b774-nfdxx                                 Container image "registry.k8s.io/coredns/coredns:v1.11.3" already present on machine
+kube-system             31m         Normal    Started                   pod/coredns-55cb58b774-nfdxx                                 Started container coredns
+kube-system             31m         Normal    Created                   pod/coredns-55cb58b774-nfdxx                                 Created container: coredns
+kube-system             31m         Normal    LeaderElection            lease/kube-controller-manager                                k1_0a370a05-7ca3-49ab-81a3-6a65633feb28 became leader
+kube-system             31m         Normal    Pulled                    pod/coredns-55cb58b774-9kntd                                 Container image "registry.k8s.io/coredns/coredns:v1.11.3" already present on machine
+kube-system             31m         Normal    Started                   pod/coredns-55cb58b774-9kntd                                 Started container coredns
+kube-system             31m         Normal    Created                   pod/coredns-55cb58b774-9kntd                                 Created container: coredns
+nginx-gateway           31m         Normal    LeaderElection            lease/nginx-gateway-leader-election                          nginx-gateway-7bd65bb7ff-l5d98_bb157546-6993-4ffa-973b-28fa97064bae became leader
+default                 31m         Normal    RegisteredNode            node/k1                                                      Node k1 event: Registered Node k1 in Controller
+default                 31m         Normal    RegisteredNode            node/k2                                                      Node k2 event: Registered Node k2 in Controller
+kube-system             31m         Normal    LeaderElection            lease/cert-manager-cainjector-leader-election                cert-manager-cainjector-f8c54c878-7b4h4_8adc39b0-eda7-47e7-9de0-d74dc4148a12 became leader
+
+📌 Verificando status dos pods no namespace kube-system...
+NAME                              READY   STATUS    RESTARTS        AGE   IP             NODE   NOMINATED NODE   READINESS GATES
+coredns-55cb58b774-9kntd          1/1     Running   59 (32m ago)    93d   10.32.0.1      k1     <none>           <none>
+coredns-55cb58b774-nfdxx          1/1     Running   59 (32m ago)    93d   10.32.0.3      k1     <none>           <none>
+etcd-k1                           1/1     Running   59 (32m ago)    93d   10.116.39.80   k1     <none>           <none>
+kube-apiserver-k1                 1/1     Running   12 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-controller-manager-k1        1/1     Running   22 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-proxy-27b8c                  1/1     Running   12 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+kube-proxy-7gtgl                  1/1     Running   11 (20h ago)    12d   10.116.39.55   k2     <none>           <none>
+kube-scheduler-k1                 1/1     Running   19 (32m ago)    12d   10.116.39.80   k1     <none>           <none>
+metrics-server-56f48fdb65-9n4pl   1/1     Running   26 (20h ago)    52d   10.44.0.12     k2     <none>           <none>
+weave-net-ns5wq                   2/2     Running   119 (32m ago)   93d   10.116.39.80   k1     <none>           <none>
+weave-net-vvfrr                   2/2     Running   117 (20h ago)   93d   10.116.39.55   k2     <none>           <none>
+
+📌 Verificando status do kubelet (local)...
+❌ Kubelet está inativo
+
+📌 Últimas mensagens do kubelet...
+-- No entries --
+
+📌 Verificando saúde do etcd (no k1)...
+127.0.0.1:2379 is healthy: successfully committed proposal: took = 4.383245ms
+
+✅ Inspeção de saúde do cluster finalizada.
+📝 Log salvo em: /home/rafalll/GIT-HUB/GIT-HUBSSS/GO-MODIS/SCRIPTO/verify-k8s/k8s-health-log-2025-05-18_18-08-59.log

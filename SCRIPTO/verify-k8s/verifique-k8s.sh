@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Nome do arquivo de log com data/hora
-LOGFILE="k8s-health-log-$(date +%F_%H-%M).log"
+# Diretório onde está o script
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Nome do arquivo de log com caminho absoluto
+LOGFILE="$SCRIPT_DIR/k8s-health-log-$(date +%F_%H-%M-%S).log"
 
 # Função para imprimir e salvar no log ao mesmo tempo
 log() {
